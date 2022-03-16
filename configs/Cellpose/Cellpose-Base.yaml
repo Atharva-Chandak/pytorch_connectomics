@@ -1,0 +1,40 @@
+# All other configurations are set by default. If you want to add new config options,
+# please modify ../connectomics/config/defaults.py
+SYSTEM:
+  NUM_GPUS: 1
+  NUM_CPUS: 2
+MODEL:
+  INPUT_SIZE: [3, 256, 256]
+  OUTPUT_SIZE: [1, 256, 256]
+  IN_PLANES: 1
+  OUT_PLANES: 3
+  TARGET_OPT: ["7"]
+  ARCHITECTURE: cellpose
+DATASET:
+  IMAGE_NAME: ["000_img.png","001_img.png"]
+  LABEL_NAME: ["000_masks.png","001_masks.png"]
+  INPUT_PATH: ../../datasets/cellpose/train # or your own dataset path
+  OUTPUT_PATH: outputs/Cellpose/
+  DO_2D: True
+  LOAD_2D: True
+  IS_ISOTROPIC: True 
+  SCALE_FACTOR: [1,1]
+  PAD_SIZE: [0, 0, 0]
+  DROP_CHANNEL: False
+SOLVER:
+  # LR_SCHEDULER_NAME: WarmupCosineLR
+  BASE_LR: 0.2
+  ITERATION_STEP: 1
+  ITERATION_SAVE: 500
+  ITERATION_TOTAL: 34000
+  SAMPLES_PER_BATCH: 8
+
+INFERENCE:
+  INPUT_SIZE: [3, 256, 256]
+  OUTPUT_SIZE: [1, 256, 256]
+  OUTPUT_ACT: ["sigmoid"]
+  IMAGE_NAME: ["000_img.png","001_img.png"] # or path to your test images
+  OUTPUT_PATH: outputs/Cellpose/test
+  OUTPUT_NAME: result.h5
+  PAD_SIZE: [0,0,0]
+  SAMPLES_PER_BATCH: 1

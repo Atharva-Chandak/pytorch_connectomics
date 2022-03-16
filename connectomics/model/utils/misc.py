@@ -83,6 +83,7 @@ class SplitActivation(object):
         '4': 1,
         '5': 11,
         '6': 1,
+        '7': 3,
         'a': -1
     }
 
